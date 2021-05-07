@@ -12,7 +12,7 @@ from datetime import datetime
 class urlToArray:
     
     def __init__(self, url):
-        self.URLtoARRAY(url)
+        self.URLArray = self.URLtoARRAY(url)
 
     def contains_IP(self, url):
         ip = url.split('://')[1].split('/')[0]
@@ -69,7 +69,7 @@ class urlToArray:
                 return -1
         except:
             return 0
-        
+
     def URLtoARRAY(self, url):
         array = []
         array.append(self.contains_IP(url))
@@ -81,5 +81,7 @@ class urlToArray:
         array.append(self.haveSubDomain_URL(url))
         array.append(self.haveHTTPS(url))
         array.append(self.domainExpries_URL(url))
-        array = np.array(array)
         return array
+
+    def getArray(self):
+        return self.URLArray
