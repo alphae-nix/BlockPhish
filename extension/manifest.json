@@ -4,6 +4,10 @@
   "name": "phishdetector",
   "version": "0.1",
 
+  "background": {
+    "service_worker": "background.js"
+  },
+  
     // Recommended
     "action": {
       "default_title": "Click Me"
