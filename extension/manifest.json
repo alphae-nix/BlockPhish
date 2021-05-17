@@ -1,0 +1,14 @@
+{
+    // Required
+  "manifest_version": 3,
+  "name": "phishdetector",
+  "version": "0.1",
+
+    // Recommended
+    "action": {
+      "default_title": "Click Me"
+    },
+    "default_locate": "en",
+    "description": "Extension permettant de collecter les liens compris dans un mail et en déduire via une IA si c'est un mail de phishing",
+    "icons": {"48": "./images/phishing_icon.png"}
+}
