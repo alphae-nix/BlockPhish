@@ -1,5 +1,4 @@
 {
-    // Required
   "manifest_version": 3,
   "name": "phishdetector",
   "version": "0.1",
@@ -7,12 +6,22 @@
   "background": {
     "service_worker": "background.js"
   },
-  
-    // Recommended
-    "action": {
-      "default_title": "Click Me"
+    
+  "permissions": ["storage", "activeTab", "scripting"],
+    
+  "action": {
+    "default_icon": {
+      "16": "/image/phishing1.png",
+      "32": "/image/phishing2.png",
+      "48": "/image/phishing3.png",
+      "128": "/image/phishing4.png"
     },
-    "default_locate": "en",
-    "description": "Extension permettant de collecter les liens compris dans un mail et en déduire via une IA si c'est un mail de phishing",
-    "icons": {"48": "./images/phishing_icon.png"}
-}
+    "default_popup": "popup.html"
+  },
+    
+  "icons": {
+    "16": "/image/phishing1.png",
+    "32": "/image/phishing2.png",
+    "48": "/image/phishing3.png",
+    "128": "/image/phishing4.png"
+  }
