@@ -11,17 +11,18 @@
     
   "action": {
     "default_icon": {
-      "16": "/image/phishing1.png",
-      "32": "/image/phishing2.png",
-      "48": "/image/phishing3.png",
-      "128": "/image/phishing4.png"
+      "16": "/images/phishing1.png",
+      "32": "/images/phishing2.png",
+      "48": "/images/phishing3.png",
+      "128": "/images/phishing4.png"
     },
     "default_popup": "popup.html"
   },
     
   "icons": {
-    "16": "/image/phishing1.png",
-    "32": "/image/phishing2.png",
-    "48": "/image/phishing3.png",
-    "128": "/image/phishing4.png"
+    "16": "/images/phishing1.png",
+    "32": "/images/phishing2.png",
+    "48": "/images/phishing3.png",
+    "128": "/images/phishing4.png"
   }
+}
