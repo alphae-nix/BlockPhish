@@ -1,16 +1,40 @@
 <!doctype html>
 <!-- interface utilisateur -->
 <html lang="fr">
-
+  
   <head>
     <meta charset="utf-8">
-    <title>Analyse de votre email</title>
+    <title href="titre">Analyse de votre email</title>
     <link rel="stylesheet" href="style.css"> <!-- feuille de style -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <button id="parser"></button> <!-- sert a changer la couleur du fond d'ecran (test) -->
-    <script src="popup.js"></script>
-  </body>
-
-</html>
+    <div id="FirstBloc">
+      <h1>Phishing Detection</h1>
+      <img src="images/phishing_icon.png" href="logo" width="30" height="30">
+    </div>
+    
+    <div id="SecondBloc">
+      <h2>Launch the email analysis</h2>
+        <!--<button id="parser" class="ripple">start</button>-->
+      <div id="button">
+        <a href="#" id="parser">
+          <span>start</span>
+          <div class="liquid"></div>
+        </a>
+        <script src="popup.js"></script>
+      </div>
+    </div>
+    <div id="ThirdBloc">
+      <h2>Analysis results</h2>
+      <div id="FirstHorizontalBloc">
+        <h3 id='Result'>This email contains a dangerous link</h3>
+      </div>
+      <div id="SecondHorizontalBloc">
+        <h3 id='Result'>This email is safe</h3>
+      </div>
+    </div> 
+    </body>
+  </html>
