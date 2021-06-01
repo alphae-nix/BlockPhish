@@ -4,30 +4,34 @@
 }
 html{
   background-image: url("images/background.png");
-
   padding: auto;
 }
-h1{
-  margin-top: 20px;
-  color: white;
-  text-align: center;
-  
-}
+
 titre{
   text-align: center;
 }
 
 #FirstBloc{
-  text-align:center;
   width: 280px;
-  margin-bottom: 20px;
+  text-align: left;
+}
+
+#paramWheel{
+  position: fixed;
+  right:-90px;
+  top: 20px;
+}
+
+#logoTop{
+  margin-top: 10px;
+  text-align: center;
 }
 
 #SecondBloc{
   width: 280px;
   display: inline-block;  
   text-align: center;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 #ThirdBloc{
@@ -56,24 +60,14 @@ titre{
   margin-left: 5px;
   margin-right: 5px;
 }
-/*
-button {
-  text-align: center;
-}
 
-button.current {
-  box-shadow: 0 0 0 2px white,
-              0 0 0 4px black;
-  
-}
-*/
 #button{
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 200px;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #fff;
   border-radius: 20px;
   margin-left: 40px;
@@ -146,3 +140,6 @@ a .liquid::after{
     
   }
 }
+
+
+
