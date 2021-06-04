@@ -1,13 +1,10 @@
 //action lorsqu'on appuye sur le bouton dans .html
 // Initialize button with user's preferred color
-let changeColor = document.getElementById("parser");
+let startButton = document.getElementById("parser");
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
 
 // When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
+startButton.addEventListener("click", async () => {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   chrome.scripting.executeScript({
@@ -18,12 +15,26 @@ changeColor.addEventListener("click", async () => {
 
 // The body of this function will be executed as a content script inside the
 // current page
+
+
 function parser() {
   var links = document.links;
   var arrayLinks = [];
   for (let i=0; i < links.length; i++){
     arrayLinks.push(links[i].href);
   }
+  var server = "http://127.0.0.1:5000/test";
+  let xhr = new XMLHttpRequest();
+
+  sender = JSON.stringify(arrayLinks)
+  xhr.open('POST', server);
+  xhr.setRequestHeader("Content-Type", "application/json"); //text/plain
+  // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhr.send(arrayLinks);
+  xhr.onload = function() {
+    alert(`Loaded: ${xhr.status} ${xhr.response}`);
+  };
+
   console.log(arrayLinks);
 
-}
+};
