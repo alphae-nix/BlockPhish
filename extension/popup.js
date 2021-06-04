@@ -28,10 +28,15 @@ function parser() {
 
   sender = JSON.stringify(arrayLinks)
   xhr.open('POST', server);
-  xhr.setRequestHeader("Content-Type", "application/json"); //text/plain
+  xhr.setRequestHeader("Content-Type", "text/plain"); // application/json
   // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
   xhr.send(arrayLinks);
   xhr.onload = function() {
+    var result = xhr.response.split(',');
+    var length = result.length;
+    result[0] = result[0].split('[')[1];
+    result[length-1] = result[length-1].split(']')[0];
+    
     alert(`Loaded: ${xhr.status} ${xhr.response}`);
   };
 
