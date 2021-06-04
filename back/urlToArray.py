@@ -28,42 +28,63 @@ class urlToArray:
             return 1
 
     def length_URL(self, url):
-        if len(url) > 75 : return -1 
-        if len(url) >= 54 : return 0
-        return 1
+        try :
+            if len(url) > 75 : return -1 
+            if len(url) >= 54 : return 0
+            return 1
+        except :
+            return 0
 
     def shortened_URL(self, url):
-        short = ["bit.ly","cutt.ly","urlz","ow.ly","T.co","tinyurl","su.jinder","tiny.cc","bit.do","urls.fr"]
-        domain = urlparse(url).netloc
-        if domain in str(short): return -1
-        return 1
+        try :
+            short = ["bit.ly","cutt.ly","urlz","ow.ly","T.co","tinyurl","su.jinder","tiny.cc","bit.do","urls.fr"]
+            domain = urlparse(url).netloc
+            if domain in str(short): return -1
+            return 1
+        except : 
+            return 0
 
     def haveAt_URL(self, url):
-        if '@' in url : return -1
-        return 1
+        try :
+            if '@' in url : return -1
+            return 1
+        except:
+            return 0
 
     def haveSlash_URL(self, url):
-        if '//' in url.split('://')[1]: return -1
-        return 1 
+        try :
+            if '//' in url.split('://')[1]: return -1
+            return 1 
+        except:
+            return 0
 
     def haveHyphen_URL(self, url):
-        if '-' in urlparse(url).netloc: return -1
-        return 1
+        try :
+            if '-' in urlparse(url).netloc: return -1
+            return 1
+        except :
+            return 0
 
     def haveSubDomain_URL(self, url):
-        domain = urlparse(url).netloc
-        if domain.startswith('www.') : domain = domain.split('www.')[1]
-        if domain.count('.') == 1 : return 1
-        if domain.count('.') == 2 : return 0
-        return -1
+        try :
+            domain = urlparse(url).netloc
+            if domain.startswith('www.') : domain = domain.split('www.')[1]
+            if domain.count('.') == 1 : return 1
+            if domain.count('.') == 2 : return 0
+            return -1
+        except :
+            return 0
 
     def haveHTTPS(self, url):
-        if 'https' in url.split('://')[0] : return 1
-        return -1
+        try :
+            if 'https' in url.split('://')[0] : return 1
+            return -1
+        except :
+            return 0
 
     def domainExpries_URL(self, url):
-        domain = urlparse(url).netloc
         try:
+            domain = urlparse(url).netloc
             info = whois.whois(domain)
             if info:
                 expire = info.expiration_date[0] if type(info.expiration_date)==list else info.expiration_date
@@ -75,29 +96,36 @@ class urlToArray:
             return 0
 
     def favicon_URL(self, url):
-        domain = urlparse(url).netloc
         try :
+            domain = urlparse(url).netloc
             page = urllib.request.urlopen(url)
             soup = BeautifulSoup(page,"html.parser")
             icon_link = str(soup.find("link", rel="shortcut icon"))
             icon_link = icon_link.split('href="')[1].split('"')[0]
             icon_link = urlparse(icon_link).netloc
+            if domain == icon_link : return 1
+            return -1
         except:
             return 0
-        if domain == icon_link : return 1
-        return -1
+        
 
     def port_URL(self, url):
-        standard_ports = [None,'80','443']
-        strange_port = ['8443']
-        port = urlparse(url).port
-        if port in standard_ports : return 1
-        if port in strange_port : return 0
-        return -1
+        try :
+            standard_ports = [None,'80','443']
+            strange_port = ['8443']
+            port = urlparse(url).port
+            if port in standard_ports : return 1
+            if port in strange_port : return 0
+            return -1
+        except :
+            return 0
         
     def HTTPSdomain_URL(self, url):
-        if 'https' in urlparse(url).netloc : return -1
-        return 1
+        try :
+            if 'https' in urlparse(url).netloc : return -1
+            return 1
+        except :
+            return 0
 
     def requestUrl_URL(self, url):
         try :
