@@ -1,29 +1,41 @@
 from flask import request, Flask, jsonify
-import  json 
+import json 
 import urlToArray
+
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.models import model_from_json
 
 app = Flask(__name__)
 
-# @app.route('/', methods=['GET', 'POST'])
-# def getArrayServer():
-#     if request.method == 'POST':
-#         url = request.get_data().decode(encoding='UTF-8',errors='strict')
-#         array = urlToArray.urlToArray(url).getArray()
-#         #faire passer dans le reseau de neuronne !
-#         return str(array)
+
+def init_ia():
+    # load json and create model
+     json_file = open('../deep_learning/model.json', 'r')
+     loaded_model_json = json_file.read()
+     json_file.close()
+     loaded_model = model_from_json(loaded_model_json)
+
+     # load weights into new model
+     loaded_model.load_weights("../deep_learning/model.h5")
+     print("Loaded model from disk") 
+     return loaded_model
+
+def predict(model, array):
+     pred=model.predict(array)
+     print(pred)
+     return pred
+
+model = init_ia()
 
 @app.route('/test', methods=['POST'])
 def test():
- print("Sum function")
- mydata = request.json
- print(mydata)
-#  for key in rf.keys():
-#   data=key
-#   print(data)
-#   data_dic=json.loads(data)
-#   print(data_dic.keys())
+    mydata = request.data.decode(encoding="UTF-8")
+    array = mydata.split(",")
+    array2 = urlToArray.urlToArray(array[0]).getArray()
+    pred = predict(model,array2)
+    print(pred)
 
- resp_dic='message reÃ§u'
- resp = jsonify(resp_dic)
- resp.headers['Access-Control-Allow-Origin']='*'
- return resp
+    resp = jsonify(pred)
+    resp.headers['Access-Control-Allow-Origin']='*'
+    return resp
