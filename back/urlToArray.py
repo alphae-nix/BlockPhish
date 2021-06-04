@@ -1,3 +1,4 @@
+from os import link
 import string
 import numpy as np
 import pandas as pd
@@ -7,6 +8,8 @@ from datetime import datetime
 import urllib.request
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+import time
+import itertools
 
 
 #  1 seems legit
@@ -16,10 +19,14 @@ from urllib.parse import urlparse
 class urlToArray:
     
     def __init__(self, url):
+        self.self_page = urllib.request.urlopen(url)
+        self.self_soup = BeautifulSoup(self.self_page,"html.parser")
+        self.self_domain = urlparse(url).netloc
+        self.self_whois = whois.whois(self.self_domain)
         self.URLArray = self.URLtoARRAY(url)
 
     def contains_IP(self, url):
-        ip = urlparse(url).netloc
+        ip = self.self_domain
         if ip.count('0x') >= 4 : return -1
         try:
             ipaddress.ip_address(ip)
@@ -38,8 +45,7 @@ class urlToArray:
     def shortened_URL(self, url):
         try :
             short = ["bit.ly","cutt.ly","urlz","ow.ly","T.co","tinyurl","su.jinder","tiny.cc","bit.do","urls.fr"]
-            domain = urlparse(url).netloc
-            if domain in str(short): return -1
+            if self.self_domain in str(short): return -1
             return 1
         except : 
             return 0
@@ -60,14 +66,14 @@ class urlToArray:
 
     def haveHyphen_URL(self, url):
         try :
-            if '-' in urlparse(url).netloc: return -1
+            if '-' in self.self_domain: return -1
             return 1
         except :
             return 0
 
     def haveSubDomain_URL(self, url):
         try :
-            domain = urlparse(url).netloc
+            domain = self.self_domain
             if domain.startswith('www.') : domain = domain.split('www.')[1]
             if domain.count('.') == 1 : return 1
             if domain.count('.') == 2 : return 0
@@ -84,8 +90,7 @@ class urlToArray:
 
     def domainExpries_URL(self, url):
         try:
-            domain = urlparse(url).netloc
-            info = whois.whois(domain)
+            info = self.self_whois
             if info:
                 expire = info.expiration_date[0] if type(info.expiration_date)==list else info.expiration_date
                 now = datetime.now()
@@ -97,13 +102,10 @@ class urlToArray:
 
     def favicon_URL(self, url):
         try :
-            domain = urlparse(url).netloc
-            page = urllib.request.urlopen(url)
-            soup = BeautifulSoup(page,"html.parser")
-            icon_link = str(soup.find("link", rel="shortcut icon"))
+            icon_link = str(self.soup.find("link", rel="shortcut icon"))
             icon_link = icon_link.split('href="')[1].split('"')[0]
             icon_link = urlparse(icon_link).netloc
-            if domain == icon_link : return 1
+            if self.domain == icon_link : return 1
             return -1
         except:
             return 0
@@ -122,20 +124,18 @@ class urlToArray:
         
     def HTTPSdomain_URL(self, url):
         try :
-            if 'https' in urlparse(url).netloc : return -1
+            if 'https' in self.domain : return -1
             return 1
         except :
             return 0
 
     def requestUrl_URL(self, url):
         try :
-            domain = urlparse(url).netloc
+            domain = self.self_domain
             count = 0
             inside = 0
 
-            page = urllib.request.urlopen(url)
-            soup = BeautifulSoup(page,"html.parser")
-            links = soup.find_all('a', href=True)
+            links = self.self_soup.find_all('a', href=True)
 
             for a in links :
                 count += 1
@@ -156,9 +156,7 @@ class urlToArray:
             count = 0
             anchor = 0
 
-            page = urllib.request.urlopen(url)
-            soup = BeautifulSoup(page,"html.parser")
-            links = soup.find_all('a', href=True)
+            links = self.self_soup.find_all('a', href=True)
 
             for a in links :
                 count += 1
@@ -178,25 +176,19 @@ class urlToArray:
         try :
             count = 0
             links = 0
-            domain = urlparse(url).netloc
-            page = urllib.request.urlopen(url)
-            soup = BeautifulSoup(page,"html.parser")
+            domain = self.self_domain
+            soup = self.self_soup
+
+            for tag2,tag3 in itertools.product(soup.find_all("script",src=True),soup.find_all("link",href=True)):
+                count += 1
+                if urlparse(tag2.get("src",None)).netloc == domain or urlparse(tag3.get("href")).netloc == domain:
+                    links += 1
 
             for tag in soup.find_all("meta",property=True):
                 if tag.get("property") == "og:url":
                     count += 1
                     if urlparse(tag.get("content",None)).netloc == domain:
                         links += 1
-
-            for tag in soup.find_all("script",src=True):
-                count+=1
-                if urlparse(tag.get("src",None)).netloc == domain:
-                    links += 1
-
-            for tag3 in soup.find_all("link",href=True):
-                count += 1
-                if urlparse(tag3.get("href")).netloc == domain:
-                    links += 1
 
             percent = (links / count) * 100
 
