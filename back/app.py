@@ -11,13 +11,13 @@ app = Flask(__name__)
 
 def init_ia():
     # load json and create model
-    json_file = open("./deep_learning/model-15.json", 'r')
+    json_file = open("../deep_learning/model-15.json", 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model = model_from_json(loaded_model_json)
 
      # load weights into new model
-    loaded_model.load_weights("./deep_learning/model-15.h5")
+    loaded_model.load_weights("../deep_learning/model-15.h5")
     return loaded_model
 
 def predict(model, array):
@@ -30,14 +30,18 @@ model = init_ia()
 def test():
     mydata = request.data.decode(encoding="UTF-8")
     urls = mydata.split(",")
-    preds = []
+
+    arrays = []
     for url in urls:
-        array = urlToArray.urlToArray(url).getArray()        
-        preds.append(predict(model,array)[0][0])
+        array = urlToArray.urlToArray(url).getArray()
+        arrays.append(array)
+        
+    pred = predict(model, arrays)
 
-
-    print(preds)
-
+    preds = []
+    for i in range(len(pred[0])):
+        preds.append(pred[0][i][0])
+    
     resp = jsonify(str(preds))
     resp.headers['Access-Control-Allow-Origin']='*'
     return resp
