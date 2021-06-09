@@ -11,3 +11,20 @@ slider.addEventListener("mouseMove",function(){
     var color = 'linear-gradient(90deg,rgb(117,252,117)'+x+'%,rgb(214,214,214)'+x+'%);';
     slider.style.background = color;
 })
+
+slider.addEventListener("mouseleave", function(){
+    var x = slider.value;
+    chrome.storage.sync.set({ 'StoredPrecision': x }, function() {
+        console.log(x);
+    });
+})
+
+window.addEventListener("load", function(){
+    chrome.storage.sync.get('StoredPrecision', function(data) {
+        slider.value = data.StoredPrecision;
+        var x = slider.value;
+        var color = 'linear-gradient(90deg,rgb(117,252,117)'+x+'%,rgb(214,214,214)'+x+'%);';
+        slider.style.background = color;
+        output.innerHTML = x;
+      });
+})
