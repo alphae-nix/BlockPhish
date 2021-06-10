@@ -25,18 +25,19 @@
           <span>start</span>
           <div class="liquid"></div>
         </a>
-        <script src="popup.js"></script>
       </div>
       
     </div>
     <div id="ThirdBloc">
-      <h2>Analysis results</h2>
+      <h2 id="analysisResults" class="analyse" style="display: none;">Analysis results</h2>
+      <div id="loader" style="display: none;"></div>
       <div id="FirstHorizontalBloc">
-        <h3 id='Result'>This email contains a dangerous link</h3>
+        <h3 id='danger' style="display: none;">This email contains a dangerous link</h3>
       </div>
-      <div id="SecondHorizontalBloc">
-        <h3 id='Result'>This email is safe</h3>
+      <div id="SecondHorizontalBloc" >
+        <h3 id='safe' style="display: none;">This email is safe</h3>
       </div>
     </div> 
+    <script src="popup.js"></script>
     </body>
   </html>
