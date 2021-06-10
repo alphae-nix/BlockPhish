@@ -11,8 +11,7 @@ var loader = document.getElementById("loader");
 // When the button is clicked, inject parser into current page
 startButton.addEventListener("click", async () => {
   //when click, show analyse and loader
-  analyse.style.display = "block";
-  loader.style.display = "block";
+  
   //hide results from previous analyse
   safe.style.display = "none";
   danger.style.display = "none";
@@ -30,9 +29,12 @@ startButton.addEventListener("click", async () => {
 
 
 async function parser() {
-  /*if (!String(url).includes("mail.google.com/mail/u/") && !url.includes("#inbox")){
-    return
-  }*/
+  var url = window.location
+  if (!String(url).includes("https://mail.google.com/mail/u/")){
+    return;
+  }
+
+  chrome.runtime.sendMessage("PhishDetector "+ "load");
 
   // ## partie précision
   var precision = 0; 
@@ -41,7 +43,41 @@ async function parser() {
   })//load la précision depuis le storage chrome
 
   // ## partie traitement des liens
-  var excludLinks = ["https://mail.google.com/mail/u/0/#inbox","https://mail.google.com/mail/u/0/#starred","https://mail.google.com/mail/u/0/#snoozed","https://hangouts.google.com", "https://mail.google.com/mail/u/0","https://www.google.com/gmail/about/policy","https://www.google.com","https://mail.google.com/mail/u/0/#calls","https://mail.google.com/mail/u/0/#drafts","https://mail.google.com/mail/u/0/#sent"];
+  var excludLinks = [
+  "https://mail.google.com/mail/u/0/#inbox",
+  "https://mail.google.com/mail/u/0/#starred",
+  "https://mail.google.com/mail/u/0/#snoozed",
+  "https://hangouts.google.com", 
+  "https://mail.google.com/mail/u/0",
+  "https://www.google.com/gmail/about/policy",
+  "https://www.google.com",
+  "https://mail.google.com/mail/u/0/#calls",
+  "https://mail.google.com/mail/u/0/#drafts",
+  "https://mail.google.com/mail/u/0/#sent",
+  "https://mail.google.com/mail/u/0/#imp",
+  "https://mail.google.com/mail/u/0/#chats",
+  "https://mail.google.com/mail/u/0/#scheduled",
+  "https://mail.google.com/mail/u/0/#all",
+  "https://mail.google.com/mail/u/0/#spam",
+  "https://mail.google.com/mail/u/0/#trash",
+  "https://mail.google.com/mail/u/0/#category/social",
+  "https://mail.google.com/mail/u/0/#category/updates",
+  "https://mail.google.com/mail/u/0/#category/forums",
+  "https://mail.google.com/mail/u/0/#category/promotions",
+  "https://mail.google.com/mail/u/0/#settings/labels",
+  "https://policies.google.com/privacy?hl=fr",
+  "https://meet.google.com/getalink?hs=202&authuser=0",
+  "https://mail.google.com/mail/u/0/?sw=2",
+  "https://support.google.com/mail/answer/8767?src=sl&hl=fr",
+  "https://support.google.com/mail/answer/90559?hl=fr",
+  "https://www.google.fr/intl/fr/about/products?tab=mh",
+  "https://www.google.com/support/accounts/bin/answer.py?answer=181692&hl=fr",
+  "https://myaccount.google.com/?utm_source=OGB&tab=mk",
+  "https://myaccount.google.com/?utm_source=OGB&tab=mk&utm_medium=act",
+  "https://mail.google.com/mail/data/u/0",
+  "https://myaccount.google.com/termsofservice?hl=fr",
+  "https://support.google.com/hangouts/?p=not_right_error&hl=fr"
+  ];
   var links = document.links;
   var arrayLinks = [];
   for (let i=0; i < links.length; i++){
@@ -53,6 +89,7 @@ async function parser() {
     if (link.substring(0,4) !== "http" || excludLinks.includes(link)) {
       continue;
     }
+    console.log(link);
     arrayLinks.push(link);
   }
 
@@ -77,20 +114,21 @@ async function parser() {
 
     //on cherche le lien qui a le bon href href 
     for(let i=0; i<result.length; i++){
+
       var allElements = document.getElementsByTagName('*');
-      var link = "";
+      var link;
       for (var j = 0, n = allElements.length; j < n; j++) {
-        if (allElements[j].getAttribute("href") == arrayLinks[i]) {
+        if (allElements[j].getAttribute("href") == arrayLinks[i] || allElements[j].getAttribute("href") == String(arrayLinks[i] + '/')) {
           link = allElements[j];
+          break;
         }
       }
-
+    
       // on compare la réponse a la précision
       if(parseFloat(result[i]) < parseFloat(precision)){
-        try {
+        console.log(result[i]);
           safeBool = false;
-          link.style.color = 'red';
-        } catch (error){};
+          link.setAttribute("style","color:red;");
       }
     };
   //on envoi un message a la popup avec le résultat de l'analyse
@@ -108,6 +146,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       danger.style.display = "block";
     } else if ( value == "true"){
       safe.style.display = "block";
+    } else if (value == "load") {
+      analyse.style.display = "block";
+      loader.style.display = "block";
     }
   }
   
