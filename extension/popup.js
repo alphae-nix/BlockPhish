@@ -57,7 +57,7 @@ async function parser() {
   }
 
   // ## Partie requete
-  var server = "https://127.0.0.1:5000/test";
+  var server = "http://127.0.0.1:5000/";
   let xhr = new XMLHttpRequest();
 
   sender = JSON.stringify(arrayLinks)
