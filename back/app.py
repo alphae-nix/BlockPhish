@@ -26,7 +26,7 @@ def predict(model, array):
 
 model = init_ia()
 
-@app.route('/test', methods=['POST'])
+@app.route('/', methods=['POST'])
 def test():
     mydata = request.data.decode(encoding="UTF-8")
     urls = mydata.split(",")
