@@ -13,6 +13,7 @@ Then, it return a array of [1, 0, -1] for each link. And each array is analysed 
 ### Result
 This result for each link is send to the web extension. It change malicious link in red color on the page and a alert message appear on the web extension. For more security, malicious link are unavailable. You can go on thanks a confirm window. 
 
+-----------------
 
 ## More about the extension
 ### Parameters
@@ -24,8 +25,10 @@ User can change your level of risk acceptation. For example if our AI is sure at
 *Phish* is an abreviation of phishing, but it can make you think about fish (look at our icon : it is a hook !). 
 *Block Phish* also can make you think about *AdBlock* an extension to stop publicity popup. 
 
-
+----------------------------------
 
 ## Launch
+```bash
 git clone
 pip -r requierement.txt
+```
