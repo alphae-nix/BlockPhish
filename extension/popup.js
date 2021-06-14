@@ -37,7 +37,7 @@ async function parser() {
   chrome.storage.sync.get('StoredPrecision', function(data) {
     precision = data.StoredPrecision;
     if (parseFloat(precision) == parseFloat(100)){
-      precision = parseFloat(0.999)
+      precision = parseFloat(99.99)
     }
   })//load la précision depuis le storage chrome
 
