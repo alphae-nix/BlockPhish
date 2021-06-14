@@ -36,6 +36,9 @@ async function parser() {
   var precision = 0; 
   chrome.storage.sync.get('StoredPrecision', function(data) {
     precision = data.StoredPrecision;
+    if (parseFloat(precision) == parseFloat(100)){
+      precision = parseFloat(0.999)
+    }
   })//load la précision depuis le storage chrome
 
   // ## partie traitement des liens
@@ -54,7 +57,7 @@ async function parser() {
   }
 
   // ## Partie requete
-  var server = "http://127.0.0.1:5000/";
+  var server = "https://127.0.0.1:5000/test";
   let xhr = new XMLHttpRequest();
 
   sender = JSON.stringify(arrayLinks)
