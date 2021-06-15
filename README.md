@@ -71,8 +71,8 @@ If you have any questions or comments about this project, or need help using it,
 
 ## Authors
 
-* **Thomas Jaillon** alias [@ines-f](https://github.com/blackjack-nix)
+* **Thomas Jaillon** alias [@jaillont](https://github.com/blackjack-nix)
 * **Laurent Delatte** _alias_ [@alphae-nix](https://github.com/alphae-nix)
-* **Théo Peresse-Gourbil** alias [monasnl](https://github.com/blackjack-nix)
-* **Manon Hermann** alias [monasnl](https://github.com/CappiLucky)
+* **Théo Peresse-Gourbil** alias [@blackjack-nix](https://github.com/blackjack-nix)
+* **Manon Hermann** alias [@CappiLucky](https://github.com/CappiLucky)
 
