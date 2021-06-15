@@ -62,3 +62,17 @@ User can change your level of risk acceptation. For example if our AI is sure at
   ```bash
   python -m flask run
   ```
+## Contact
+If you have any questions or comments about this project, or need help using it, please either raise an issue or contact us.
+- thomas.jaillon@edu.esiee.fr
+- manon.hermann@edu.esiee.fr
+- laurent.delatte@edu.esiee.fr
+- theo.peresse-gourbil@edu.esiee.fr
+
+## Authors
+
+* **Thomas Jaillon** alias [@ines-f](https://github.com/blackjack-nix)
+* **Laurent Delatte** _alias_ [@alphae-nix](https://github.com/alphae-nix)
+* **Théo Peresse-Gourbil** alias [monasnl](https://github.com/blackjack-nix)
+* **Manon Hermann** alias [monasnl](https://github.com/CappiLucky)
+
