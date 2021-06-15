@@ -11,14 +11,12 @@ var loader = document.getElementById("loader");
 // When the button is clicked, inject parser into current page
 startButton.addEventListener("click", async () => {
   //when click, show analyse and loader
-  
   //hide results from previous analyse
   safe.style.display = "none";
   danger.style.display = "none";
-
   //get all tabs from chrome
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
+  
   //launch script in the page
   await chrome.scripting.executeScript({
     target: { tabId: tab.id },
@@ -29,7 +27,6 @@ startButton.addEventListener("click", async () => {
 
 
 async function parser() {
-
   chrome.runtime.sendMessage("PhishDetector "+ "load");
 
   // ## partie précision
@@ -37,7 +34,7 @@ async function parser() {
   chrome.storage.sync.get('StoredPrecision', function(data) {
     precision = data.StoredPrecision;
     if (parseFloat(precision) == parseFloat(100)){
-      precision = parseFloat(99.99)
+      precision = parseFloat(99.999)
     }
   })//load la précision depuis le storage chrome
 
@@ -57,7 +54,7 @@ async function parser() {
   }
 
   // ## Partie requete
-  var server = "http://127.0.0.1:5000/";
+  var server = "http://127.0.0.1:5000/url";
   let xhr = new XMLHttpRequest();
 
   sender = JSON.stringify(arrayLinks)
@@ -82,14 +79,17 @@ async function parser() {
         var link;
         for (var j = 0, n = allElements.length; j < n; j++) {
           if (allElements[j].getAttribute("href") == arrayLinks[i] || allElements[j].getAttribute("href") == String(arrayLinks[i] + '/')) {
+            if(String(allElements[j].getAttribute("style")).includes("color:red;")){
+              continue;
+            }
             link = allElements[j];
             break;
+            
           }
         }
     
         // on compare la réponse a la précision
         if(parseFloat(result[i]) < parseFloat(precision)){
-          console.log(result[i]);
           safeBool = false;
           link.setAttribute("style","color:red;");
 
