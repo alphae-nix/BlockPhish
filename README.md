@@ -62,6 +62,7 @@ User can change your level of risk acceptation. For example if our AI is sure at
   ```bash
   python -m flask run
   ```
+----------------------------------  
 ## Contact
 If you have any questions or comments about this project, or need help using it, please either raise an issue or contact us.
 - [Thomas Jaillon](mailto:thomas.jaillon@edu.esiee.fr) *github:* alias [@jaillont](https://github.com/jaillont)
