@@ -28,7 +28,37 @@ User can change your level of risk acceptation. For example if our AI is sure at
 ----------------------------------
 
 ## Launch
-```bash
-git clone
-pip -r requierement.txt
-```
+### Install the extension
+1. Download the [project]()
+2. Go to [the chrome extension page](chrome://extensions)
+3. Enable *developper mode*
+4. Click *Load unpacked extension*
+5. Choose the *etension* folder and load
+6. Enjoy
+
+### Install the server
+1. Download the [project]()
+2. Install requierments
+  ```python
+  pip -r requierment.txt
+  ```
+  You could face some problemes with tensorflow depending on your graphic card
+3. Set flask path 
+  For Windows : 
+  ```bash
+  cd back
+  set FLASK_APP = app.py
+  ```
+  For linux :
+  ```bash
+  cd back
+  export FLASK_APP = app.py
+  ```
+4. Run flask server
+  ```bash
+  flask run
+  ```
+  Or :
+  ```bash
+  python -m flask run
+  ```
