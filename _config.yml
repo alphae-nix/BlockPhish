@@ -1,5 +1,7 @@
 theme: jekyll-theme-cayman
 title: BlockPhish
+author: jaillont , blackjack-nix , CappiLucky , alphae-nix
+email: thomas.jaillon@edu.esiee.fr
 description: The Chrome phishing detection extension
 
 plugins:
