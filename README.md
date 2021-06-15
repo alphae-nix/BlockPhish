@@ -43,6 +43,7 @@ User can change your level of risk acceptation. For example if our AI is sure at
   pip -r requierment.txt
   ```
   You could face some problemes with tensorflow depending on your graphic card
+  
 3. Set flask path 
   For Windows : 
   ```bash
