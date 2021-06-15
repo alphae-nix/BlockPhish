@@ -1,3 +1,13 @@
 theme: jekyll-theme-cayman
 title: BlockPhish
 description: The Chrome phishing detection extension
+
+plugins:
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+include:
+  - CONTRIBUTING.md
+  - README.md
+  - WIKI.md
