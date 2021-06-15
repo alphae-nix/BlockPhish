@@ -1,4 +1,4 @@
-# E3 project : Block Phish
+# E3 project : Block Phish 🪝
 
 [Some Doc](_my_collection/WIKI.md)
 
