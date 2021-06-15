@@ -29,7 +29,7 @@ User can change your level of risk acceptation. For example if our AI is sure at
 
 ## Launch
 ### Install the extension
-1. Download the [project]()
+1. Download the [project](https://github.com/alphae-nix/projetE3/archive/refs/heads/main.zip)
 2. Go to [the chrome extension page](chrome://extensions)
 3. Enable *developper mode*
 4. Click *Load unpacked extension*
@@ -37,7 +37,7 @@ User can change your level of risk acceptation. For example if our AI is sure at
 6. Enjoy
 
 ### Install the server
-1. Download the [project]()
+1. Download the [project](https://github.com/alphae-nix/projetE3/archive/refs/heads/main.zip)
 2. Install requierments
   ```python
   pip -r requierment.txt
