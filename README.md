@@ -64,15 +64,9 @@ User can change your level of risk acceptation. For example if our AI is sure at
   ```
 ## Contact
 If you have any questions or comments about this project, or need help using it, please either raise an issue or contact us.
-- thomas.jaillon@edu.esiee.fr
-- manon.hermann@edu.esiee.fr
-- laurent.delatte@edu.esiee.fr
-- theo.peresse-gourbil@edu.esiee.fr
+- [Thomas Jaillon](mailto:thomas.jaillon@edu.esiee.fr) *github:* alias [@jaillont](https://github.com/jaillont)
+- [Manon Hermann](mailto:manon.hermann@edu.esiee.fr) *github:* alias [@CappiLucky](https://github.com/CappiLucky)
+- [Laurent Delatte](mailto:laurent.delatte@edu.esiee.fr) *github:* alias [@alphae-nix](https://github.com/alphae-nix)
+- [Theo Peresse-Gourbil](mailto:theo.peresse-gourbil@edu.esiee.fr) *github:* alias [@blackjack-nix](https://github.com/blackjack-nix)
 
-## Authors
-
-* **Thomas Jaillon** alias [@jaillont](https://github.com/jaillont)
-* **Laurent Delatte** _alias_ [@alphae-nix](https://github.com/alphae-nix)
-* **Théo Peresse-Gourbil** alias [@blackjack-nix](https://github.com/blackjack-nix)
-* **Manon Hermann** alias [@CappiLucky](https://github.com/CappiLucky)
 
