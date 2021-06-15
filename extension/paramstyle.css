@@ -6,7 +6,6 @@
 }
 
 html{
-
   background: #5991fa;
 }
 
@@ -15,9 +14,7 @@ body{
   display: inline-block;
   text-align: center;
   width: 280px;
-  height: 300px;
-  
-  
+  height: auto;
 }
 
 #topBar{
@@ -57,7 +54,7 @@ body{
   font-size: 2rem;
   position: absolute;
   left: 15%;
-  top: 55%;
+  top: 60%;
 }
 
 .slider:hover{
@@ -70,7 +67,7 @@ body{
   font-size: 2rem;
   position: absolute;
   left: 70%;
-  top: 55%;
+  top: 60%;
 }
 
 .slider::-webkit-slider-thumb{
@@ -85,9 +82,13 @@ body{
 
 p{
   opacity: 0.7;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 #back {
   display: flex;
+}
+
+.sliderContainer p{
+  font-size: 20px;
 }
