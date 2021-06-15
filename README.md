@@ -1,7 +1,5 @@
 # E3 project : Block Phish 🪝
 
-[Some Doc](_my_collection/WIKI.md)
-
 ## How it work ?
 ### Start the analyse
 Open you web extension and click on the "start" button. Wait few minutes for the analyse result. 
