@@ -1,4 +1,4 @@
-# E3 project : Block Phish 🪝
+# ESIEE Paris Student project : Block Phish 🪝
 
 ## How it work ?
 ### Start the analyse
