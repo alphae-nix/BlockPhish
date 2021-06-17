@@ -1,22 +1,22 @@
 # ESIEE Paris Student project : Block Phish
-## Project desciption
+## Project description
 This project has been made for "Day of project 2021" for ESIEE Paris. This project is composed in 2 parts : 
 - The first part is a web extension for chrome. This extension analyse your web page, and alarm you if a phishing link is detected
-- The second part is the server. It is the back part of this porject. It analyse your mail, and make a prediction about your link
+- The second part is the server. It is the back part of this project. It analyses your mail, and make a prediction about your link
 
 ----------------------------------
 
-## How it work ?
-### Start the analyse
-Open you web extension and click on the "start" button. Wait few minutes for the analyse result. 
+## How it works ?
+### Start the analysis
+Open your web extension and click on the "start" button. Wait few minutes for the analysis result. 
 
 ### Analyse
-The web extension collect all links on the current page. It send them to a python server. All links are passed in 15 functions which look at characteristics like : length of url, using shorting services (bit.li), using weard symbol @ // #, multi sub domains, ...
+The web extension collect all links on the current page. It sends them to a python server. All links are passed in 15 functions which look at characteristics like : length of URL, using shorting services (bit.li), using weird symbol @ // #, multi subdomains, ...
 
-Then, it return a array of [1, 0, -1] for each link. And each array is analysed by a neural network (deep learning). It return a percent that corresponds to a phishing prediction. 
+Then, it returns an array of [1, 0, -1] for each link. And each array is analysed by a neural network (deep learning). It returns a percent that corresponds to a phishing prediction. 
 
 ### Result
-This result for each link is send to the web extension. It change malicious link in red color on the page and a alert message appear on the web extension. For more security, malicious link are unavailable. You can go on thanks a confirm window. 
+This result for each link is sent to the web extension. It changes malicious link in red color on the page and an alert message appear on the web extension. For more security, malicious link are unavailable. You can go on, thanks a confirm window. 
 
 -----------------
 
@@ -27,40 +27,40 @@ User can change your level of risk acceptation. For example if our AI is sure at
 ### Name inspiration
 *Block Phish* is a reference to stopping phishing links. 
 
-*Phish* is an abreviation of phishing, but it can make you think about fish (look at our icon : it is a hook !). 
-*Block Phish* also can make you think about *AdBlock* an extension to stop publicity popup. 
+*Phish* is an abbreviation of phishing, but it can make you think about fish (look at our icon : it is a hook !). 
+*Block Phish* also can make you think about *AdBlock* an extension to stop publicity pop-up. 
 
 ----------------------------------
 
 ## Launch
 ### Install the extension
 1. Download the [project](https://github.com/alphae-nix/projetE3/archive/refs/heads/main.zip)
-2. Go to [the chrome extension page](chrome://extensions)
-3. Enable *developper mode*
+2. Go to [the Chrome extension page](chrome://extensions)
+3. Enable *developer mode*
 4. Click *Load unpacked extension*
-5. Choose the *etension* folder and load
+5. Choose the *extension* folder and load
 6. Enjoy
 
 ### Install the server
 1. Download the [project](https://github.com/alphae-nix/projetE3/archive/refs/heads/main.zip)
-2. Install requierments
+2. Install requirements
   ```python
   pip -r requierment.txt
   ```
-  You could face some problemes with tensorflow depending on your graphic card
+  You could face some problems with TensorFlow depending on your graphic card
   
-3. Set flask path 
+3. Set Flask path 
   - For Windows : 
   ```bash
   cd back
   set FLASK_APP = app.py
   ```
-  - For linux :
+  - For Linux :
   ```bash
   cd back
   export FLASK_APP = app.py
   ```
-4. Run flask server
+4. Run Flask server
   ```bash
   flask run
   ```
