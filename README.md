@@ -1,4 +1,4 @@
-# ESIEE Paris Student project : Block Phish 🪝
+# ESIEE Paris Student project : Block Phish!
 ## Project desciption
 This project has been made for "Day of project 2021" for ESIEE Paris. This project is composed in 2 parts : 
 - The first part is a web extension for chrome. This extension analyse your web page, and alarm you if a phishing link is detected
