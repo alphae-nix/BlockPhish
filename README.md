@@ -3,6 +3,7 @@
 This project has been made for "Day of project 2021" for ESIEE Paris. This project is composed in 2 parts : 
 - The first part is a web extension for chrome. This extension analyse your web page, and alarm you if a phishing link is detected
 - The second part is the server. It is the back part of this porject. It analyse your mail, and make a prediction about your link
+
 ----------------------------------
 
 ## How it work ?
