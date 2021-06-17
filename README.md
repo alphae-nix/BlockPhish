@@ -1,5 +1,5 @@
 # ESIEE Paris Student project : Block Phish 🪝
-# Project desciption
+## Project desciption
 This project is has been made for "Day of project 2021" for ESIEE Paris. This project is composed in 2 parts : 
 - The first part is a web extension for chrome. This extension analyse your web page, and alarm you if a phishing link is detected
 - The second part is the server. It is the back part of this porject. It analyse your mail, and make a prediction about your link
@@ -49,12 +49,12 @@ User can change your level of risk acceptation. For example if our AI is sure at
   You could face some problemes with tensorflow depending on your graphic card
   
 3. Set flask path 
-  For Windows : 
+  - For Windows : 
   ```bash
   cd back
   set FLASK_APP = app.py
   ```
-  For linux :
+  - For linux :
   ```bash
   cd back
   export FLASK_APP = app.py
