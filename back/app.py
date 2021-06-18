@@ -7,49 +7,29 @@
 # You should have received a copy of the GNU General Public License along with this program; if not, go on http://www.gnu.org/licenses/gpl-3.0.html or write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 from flask import request, Flask, jsonify
-import json 
 import urlToArray
-import time
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.models import model_from_json
-
+import xgboost as xgb
+import pandas as pd
+ 
 app = Flask(__name__)
+model = xgb.XGBClassifier()
+model.load_model("../deep_learning/model_xgb2_83.json")
+print(model)
 
-
-def init_ia():
-    # load json and create model
-    json_file = open("../deep_learning/model-15.json", 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    loaded_model = model_from_json(loaded_model_json)
-
-     # load weights into new model
-    loaded_model.load_weights("../deep_learning/model-15.h5")
-    return loaded_model
-
-def predict(model, array):
-    pred=model.predict([array])
-    return pred
-
-model = init_ia()
-
-@app.route('/', methods=['POST'])
+@app.route('/url', methods=['POST'])
 def test():
     mydata = request.data.decode(encoding="UTF-8")
     urls = mydata.split(",")
-
     arrays = []
     for url in urls:
         array = urlToArray.urlToArray(url).getArray()
         arrays.append(array)
         
-    pred = predict(model, arrays)
-
+    pred = model.predict_proba(pd.DataFrame(arrays))
     preds = []
-    for i in range(len(pred[0])):
-        preds.append(pred[0][i][0])
-    
+    for i in pred :
+        preds.append(i[1]*100)
+    print(preds)
     resp = jsonify(str(preds))
     resp.headers['Access-Control-Allow-Origin']='*'
     return resp
