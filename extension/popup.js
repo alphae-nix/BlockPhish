@@ -101,14 +101,13 @@ async function parser() {
         if(parseFloat(result[i]) < parseFloat(precision)){
           safeBool = false;
           link.setAttribute("style","color:red;");
-
+          let originalLink = link.href
           link.addEventListener("click", function(){
-            let href = link.getAttribute("href");
-            link.setAttribute("href","javascript:;");
+            let href = originalLink;
+            this.setAttribute("href",href);
             let confirmation = confirm("This link has been identified has malicious. Do you really want to go ?");
-            if(confirmation === true){
-              link.setAttribute("href",href);
-              window.location.href = href;
+            if(confirmation === false){
+              this.setAttribute("href","javascript:;");              
             }
           })
     
