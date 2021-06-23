@@ -101,7 +101,7 @@ User can change your level of risk acceptation. For example if our AI is sure at
 Careful, don't click on bad links ! It’s just for test the extension
 
 - [facebook.com  - safe link #1](https://www.facebook.com/) ✅
-- [bad link # 1](**http://kotulin.com.pl/Vbd52c403b2hefg96/?eby=usa&mur=bWFya2FsbGVuMkBjZW50dXJ5bGluay5uZXQmessage-id:**) ❌
+- [bad link # 1](http://kotulin.com.pl/Vbd52c403b2hefg96/?eby=usa&mur=bWFya2FsbGVuMkBjZW50dXJ5bGluay5uZXQmessage-id:) ❌
 - [bad link #2](https://pay116-olx.info) ❌
 - [google.fr - safe link #2](https://www.google.fr/) ✅
 - [bad link #3](https://ipkobiznes.cc/auth/login/) ❌
