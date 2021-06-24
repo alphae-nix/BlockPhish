@@ -104,8 +104,8 @@ Careful, don't click on bad links ! It’s just for test the extension
 - [Google.fr - safe link #2](https://www.google.fr/) ✅
 - [Linkedin.com - safe link #3](https://www.linkedin.com/) ✅
 - [bad link #1](https://dsewrdeeds5.s3.eu-gb.cloud-object-storage.appdomain.cloud/homoeochromatic/index.html#eimaste@stinpriza.org) ❌
-- [bad link #2](https://pay116-olx.info) ❌
-- [bad link #3](https://ipkobiznes.cc/auth/login/) ❌
+- [bad link #2](https://aonzon.co.ip.ocguesh.asia/pc) ❌
+- [bad link #3](https://pgs-presseportal.net/ec#abuse@optusnet.com.au) ❌
 
 ----------------------------------
 
