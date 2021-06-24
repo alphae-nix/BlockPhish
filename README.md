@@ -103,7 +103,7 @@ Careful, don't click on bad links ! It’s just for test the extension
 - [Facebook.com  - safe link #1](https://www.facebook.com/) ✅
 - [Google.fr - safe link #2](https://www.google.fr/) ✅
 - [Linkedin.com - safe link #3](https://www.linkedin.com/) ✅
-- [bad link #1](http://kotulin.com.pl/Vbd52c403b2hefg96/?eby=usa&mur=bWFya2FsbGVuMkBjZW50dXJ5bGluay5uZXQmessage-id:) ❌
+- [bad link #1](https://dsewrdeeds5.s3.eu-gb.cloud-object-storage.appdomain.cloud/homoeochromatic/index.html#eimaste@stinpriza.org) ❌
 - [bad link #2](https://pay116-olx.info) ❌
 - [bad link #3](https://ipkobiznes.cc/auth/login/) ❌
 
